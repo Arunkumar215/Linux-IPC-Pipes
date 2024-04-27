@@ -52,7 +52,18 @@ client(p1[1],p2[0]);
 wait(waits); 
 return 0; 
 } 
-
+void client(int wfd,int rfd) {
+int i,j,n; char fname[2000];
+char buff[2000];
+printf("ENTER THE FILE NAME :");
+scanf("%s",fname);
+printf("CLIENT SENDING THE REQUEST .... PLEASE WAIT\n");
+sleep(10);
+write(wfd,fname,2000);
+n=read(rfd,buff,2000);
+buff[n]='\0';
+printf("THE RESULTS OF CLIENTS ARE ...... \n"); write(1,buff,n);
+}
 void server(int rfd,int wfd) 
 { 
 int i,j,n; 
@@ -68,30 +79,18 @@ else
 n=read(fd,buff,2000); 
 write(wfd,buff,n); 
 }
-void client(int wfd,int rfd) {
-int i,j,n; char fname[2000];
-char buff[2000];
-printf("ENTER THE FILE NAME :");
-scanf("%s",fname);
-printf("CLIENT SENDING THE REQUEST .... PLEASE WAIT\n");
-sleep(10);
-write(wfd,fname,2000);
-n=read(rfd,buff,2000);
-buff[n]='\0';
-printf("THE RESULTS OF CLIENTS ARE ...... \n"); write(1,buff,n);
-}
 ```
 
 
 
 
 ## OUTPUT
-![image](https://github.com/Arunkumar215/Linux-IPC-Pipes/assets/166196271/e77e1cea-38eb-406e-b5bd-88e977b37a26)
+![image](https://github.com/Arunkumar215/Linux-IPC-Pipes/assets/166196271/e8020e1a-9e9b-4279-8e9e-2982928133a3)
+
 
 
 ## C Program that illustrate communication between two process using named pipes using Linux API system calls
 ```
-#include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
@@ -107,10 +106,8 @@ exit(EXIT_SUCCESS);
 
 
 ## OUTPUT
-![image](https://github.com/Arunkumar215/Linux-IPC-Pipes/assets/166196271/4f151d7f-7c33-408d-ae61-23fd5a129451)
 
-![image](https://github.com/Arunkumar215/Linux-IPC-Pipes/assets/166196271/3587dbf9-50d3-45fb-8134-a608bf5a0df1)
-
+![image](https://github.com/Arunkumar215/Linux-IPC-Pipes/assets/166196271/8ecc7c32-33bc-433f-b993-1ff7c5eaa1e8)
 
 # RESULT:
 The program is executed successfully.
